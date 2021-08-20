@@ -16,6 +16,11 @@
                     @error('name')
                         {{$message}}
                     @enderror
+                    <label>Rol</label>
+                    <input type="text" name="rol">
+                    @error('rol')
+                        {{$message}}
+                    @enderror
                     <label>email</label>
                     <input type="email" name="email">
                     @error('email')

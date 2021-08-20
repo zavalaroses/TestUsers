@@ -4,7 +4,7 @@
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <meta http-equiv="X-UA-Compatible" content="ie=edge">
-      <title>DataTables </title>
+      <title>Supervisor</title>
       <meta name="description" content="">
       <meta name="keywords" content="">
       <link href="https://unpkg.com/tailwindcss/dist/tailwind.min.css" rel="stylesheet">
@@ -102,7 +102,7 @@
         <div class="col-lg-12 margin-tb">
             
             <div class="pull-right">
-                <a href="{{route('user.create')}}"> Add User</a>
+               
             </div>
         </div>
 
@@ -133,7 +133,7 @@
 							<th data-priority="3">Email</th>
 							<th data-priority="4">Rol</th>
 							<th data-priority="5">Image</th>
-							<th data-priority="6">Actions</th>
+							
 						</tr>
 					</thead>
 					<tbody>
@@ -145,17 +145,7 @@
             <td>{{ $users->rol }}</td>
             <td>
             </td>
-            <td>
-                    <a class="btn btn-primary" href="{{route('user.edit',$users->id)}}">Edit</a>
-            </td>
-            <td>
-                <form action="{{route('user.destroy',$users->id)}}" method="POST">
-                    @csrf
-                    @method('DELETE')
-                    <button onclick="return confirm('Are You shure to Delete')" type="submit" class="ml-3">Delete</button>
-                </form>
-            </td>
-        </tr>
+            
         @endforeach
 					</tbody>
 					

@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Auth;
-
+use App\Models\Users;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\LoginRequest;
 use App\Providers\RouteServiceProvider;
@@ -32,7 +32,23 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
-        return redirect()->intended(RouteServiceProvider::HOME);
+        
+        if (auth()->check()) {
+            if (auth()->user()->rol == 'admin') {
+                $users = Users::all();
+                return view('pages.user.index', compact('users'));
+            }
+            if (auth()->user()->rol == 'SuperUsuario') {
+                return view('pages.super.create');
+            }
+            if (auth()->user()->rol == 'Supervisor') {
+                $users = Users::all();
+                return view('pages.supervisor.index', compact('users'));
+            }
+            
+        }else{
+            return redirect()->to('/');
+        }
     }
 
     /**

@@ -1,5 +1,7 @@
 <?php
 use App\Http\Controllers\UsersController;
+use App\Http\Controllers\SupervisorController;
+use App\Http\Controllers\SuperControlle;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,5 +26,7 @@ Route::get('/dashboard', function () {
 
 Route::view('/','welcome');
 Route::view('/dashboard','dashboard')->middleware(['auth'])->name('dashboard');
-Route::resource('user',UsersController::class)->shallow();
+Route::resource('user',UsersController::class)->middleware('auth');
+Route::resource('supervisor',SupervisorController::class)->middleware('auth');
+Route::resource('super',SuperControlle::class)->middleware('auth');
 require __DIR__.'/auth.php';
